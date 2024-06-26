@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option java_package = "com.jpm.codingchallenge";
+option java_multiple_files = true;
+
+message LastSearchedLocation {
+    double latitude = 1;
+    double longitude = 2;
+}

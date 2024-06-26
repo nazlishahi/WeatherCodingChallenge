@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/margin_normal">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:queryHint="@string/query_hint_search"
+            app:iconifiedByDefault="false"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/margin_normal">
+
+            <TextView
+                android:id="@+id/cityTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="City Name, State, Country"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                style="@style/TextAppearance.AppCompat.Headline"/>
+
+            <TextView
+                android:id="@+id/nowTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/margin_normal"
+                android:text="@string/text_now"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cityTextView"
+                style="@style/TextAppearance.AppCompat.Title"/>
+
+            <TextView
+                android:id="@+id/currentTemperatureView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="13°F"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/nowTextView"
+                style="@style/TextAppearance.AppCompat.Display2"/>
+
+            <ImageView
+                android:id="@+id/weatherIconView"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/icon_size"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
+                app:layout_constraintStart_toEndOf="@id/currentTemperatureView"
+                app:layout_constraintTop_toTopOf="@id/currentTemperatureView"
+                app:layout_constraintBottom_toBottomOf="@id/currentTemperatureView"/>
+
+            <TextView
+                android:id="@+id/highLowTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="High: 86 • Low: 55"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/currentTemperatureView"
+                android:layout_marginBottom="@dimen/margin_normal"
+                style="@style/TextAppearance.AppCompat.Small"/>
+
+            <TextView
+                android:id="@+id/descriptionTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="Feels like 14°C.\nClear sky. Gentle Breeze"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/highLowTextView"
+                style="@style/TextAppearance.AppCompat.Small"/>
+
+
+            <!--<TextView
+                android:id="@+id/fiveDayForecastTitleView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/margin_large"
+                android:text="@string/title_5_day_forecast"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/highLowTextView"
+                style="@style/TextAppearance.AppCompat.Title"/>
+
+            <LinearLayout
+                android:id="@+id/fiveDayForecastView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fiveDayForecastTitleView"
+                android:layout_marginVertical="@dimen/margin_normal">
+
+                <include
+                    android:id="@+id/day1ForecastView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    layout="@layout/item_weather_forecast_day"/>
+
+                <include
+                    android:id="@+id/day2ForecastView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    layout="@layout/item_weather_forecast_day"/>
+
+                <include
+                    android:id="@+id/day3ForecastView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    layout="@layout/item_weather_forecast_day"/>
+
+                <include
+                    android:id="@+id/day4ForecastView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    layout="@layout/item_weather_forecast_day"/>
+
+                <include
+                    android:id="@+id/day5ForecastView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    layout="@layout/item_weather_forecast_day"/>
+
+            </LinearLayout>-->
+
+            <TextView
+                android:id="@+id/currentConditionsTitleView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/margin_large"
+                android:text="@string/title_current_conditions"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/highLowTextView"
+                style="@style/TextAppearance.AppCompat.Title"/>
+
+            <TextView
+                android:id="@+id/currentConditionsTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/margin_normal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/currentConditionsTitleView"
+                style="@style/TextAppearance.AppCompat.Medium"/>
+
+            <TextView
+                android:id="@+id/sunriseSunsetTitleView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/margin_large"
+                android:text="@string/title_sunrise_sunset"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/currentConditionsTextView"
+                style="@style/TextAppearance.AppCompat.Title"/>
+
+            <TextView
+                android:id="@+id/sunriseAndSunsetTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/margin_large"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/sunriseSunsetTitleView"
+                style="@style/TextAppearance.AppCompat.Medium"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

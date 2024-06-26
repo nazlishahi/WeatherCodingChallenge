@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">WeatherCodingChallenge</string>
+    <string name="text_now">Now</string>
+    <string name="temperature_TEMPLATE">%d°F</string>
+    <string name="high_low_TEMPLATE">High: %1$d° • Low: %2$d°</string>
+    <string name="high_low_forecast_TEMPLATE">%1$d / %2$d °F</string>
+    <string name="description_TEMPLATE">%s\n\nFeels like %d°F</string>
+
+    <string name="title_current_conditions">Current conditions</string>
+    <string name="currentConditions_TEMPLATE">Wind: %1$d mph\nPressure: %2$d hPa\nHumidity: %3$d %%</string>
+    <string name="sunrise_sunset_TEMPLATE">Sunrise: %1$s • Sunset: %2$s</string>
+
+    <string name="title_5_day_forecast">5-day forecast</string>
+    <string name="title_sunrise_sunset">Sunrise &amp; sunset</string>
+
+    <string name="generic_error_message">Something went wrong. Please try again later.</string>
+    <string name="location_permission_not_granted_dialog_title">Location access</string>
+    <string name="location_permission_not_granted_dialog_message">This app needs access to your location to provide weather information for your current location. Please grant location permission in order to proceed.</string>
+    <string name="ok">OK</string>
+    <string name="query_hint_search">Search city</string>
+
+</resources>
