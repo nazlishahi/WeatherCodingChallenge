@@ -41,18 +41,13 @@ class MainViewModel @Inject constructor(
 
     fun onLastKnownLocationRetrieved(lastKnownLocation: Location) {
         viewModelScope.launch {
-            println("MainViewModel getLastSearchedLocation() askdfj")
             dataStoreHelper.getLastSearchedLocation().firstOrNull()?.let { lastSearchedLocation ->
-                println("MainViewModel lastSearchedLocation:${lastSearchedLocation.latitude}, ${lastSearchedLocation.longitude}")
                 if (lastSearchedLocation.latitude == 0.0 && lastSearchedLocation.longitude == 0.0) {
-                    println("MainViewModel lastSearchedLocation IF lastKnownLocation:${lastKnownLocation.latitude}, ${lastKnownLocation.longitude}")
                     getWeatherInfo(lastKnownLocation.latitude, lastKnownLocation.longitude)
                 } else {
-                    println("MainViewModel lastSearchedLocation ELSE")
                     getWeatherInfo(lastSearchedLocation.latitude, lastSearchedLocation.longitude)
                 }
             } ?: run {
-                println("MainViewModel lastSearchedLocation RUN 2")
                 getWeatherInfo(lastKnownLocation.latitude, lastKnownLocation.longitude)
             }
         }
