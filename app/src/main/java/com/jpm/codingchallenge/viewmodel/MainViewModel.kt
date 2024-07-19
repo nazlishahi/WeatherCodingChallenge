@@ -9,17 +9,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.android.gms.tasks.Task
 import com.jpm.codingchallenge.data.LocalWeatherDataModel
 import com.jpm.codingchallenge.helper.DataStoreHelper
 import com.jpm.codingchallenge.usecase.GetCitySuggestionsUseCase
 import com.jpm.codingchallenge.usecase.GetCoordinatesByQueryUseCase
 import com.jpm.codingchallenge.usecase.GetCurrentWeatherUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -79,7 +74,6 @@ class MainViewModel @Inject constructor(
             _progressFlag.postValue(true)
             runCatching {
                 val city = coordinatesByQueryUseCase.invoke(selectedSuggestion).firstOrNull()
-                println("MainViewModel onCitySuggestionClicked() city:$city")
                 city?.let {
                     getWeatherInfo(it.latitude, it.longitude)
                 }

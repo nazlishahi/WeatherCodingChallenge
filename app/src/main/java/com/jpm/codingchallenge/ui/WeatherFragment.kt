@@ -35,7 +35,7 @@ class WeatherFragment: Fragment() {
         private const val LOCATION_PERMISSION = Manifest.permission.ACCESS_COARSE_LOCATION
     }
 
-    private val viewModel: MainViewModel by viewModels()
+    private val viewModel by activityViewModels<MainViewModel>()
 
     private lateinit var binding: FragmentWeatherBinding
 
@@ -51,22 +51,18 @@ class WeatherFragment: Fragment() {
             if (isGranted) {
                 try {
                     fusedLocationClient.lastLocation
-                        .addOnSuccessListener {
-                            viewModel.onLastKnownLocationRetrieved(it)
+                        .addOnSuccessListener { location ->
+                            location?.let {
+                                viewModel.onLastKnownLocationRetrieved(location)
+                            } ?: run {
+                                showLocationPermissionNotGrantedDialog()
+                            }
                         }
                         .addOnFailureListener {
-                            Toast.makeText(
-                                requireContext(),
-                                it.localizedMessage,
-                                Toast.LENGTH_LONG
-                            ).show()
+                            showError(it.localizedMessage)
                         }
                 } catch (e: SecurityException) {
-                    Toast.makeText(
-                        requireContext(),
-                        e.localizedMessage,
-                        Toast.LENGTH_LONG
-                    ).show()
+                    showError(e.localizedMessage)
                 }
             } else {
                 showLocationPermissionNotGrantedDialog()
@@ -226,5 +222,13 @@ class WeatherFragment: Fragment() {
 
         val dialog: AlertDialog = builder.create()
         dialog.show()
+    }
+
+    private fun showError(errorMessage: String?) {
+        Toast.makeText(
+            requireContext(),
+            errorMessage ?: getString(R.string.generic_error_message),
+            Toast.LENGTH_LONG
+        ).show()
     }
 }
